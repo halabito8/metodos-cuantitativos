@@ -24,15 +24,8 @@ while(True):
         list_coefficients.append(int(coefficient))
 
 # Example problem
-c = np.array([1000, 500, 2500])  # Coefficients of the objective function to maximize
 A_ub = np.array([[100, 80, 0], [90, 50, 100], [30, 100, 40]])  # Coefficients matrix for inequality constraints
 b_ub = np.array([200, 250, 180])  # Right-hand side values for inequality constraints
 
 list_coefficients = np.array(list_coefficients)
 solve_simplex(list_coefficients, A_ub, b_ub)
-
-# entrada = 0
-# while(True):
-#     if entrada == 1:
-#         break
-#     entrada = int(input("1. Salir\n2. Ingresar datos\n"))
