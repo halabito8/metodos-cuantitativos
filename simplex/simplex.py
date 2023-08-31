@@ -11,12 +11,25 @@ def solve_simplex(c, A_ub, b_ub):
     else:
         print("Optimization failed:", result.message)
 
+
+# Gather coefficients of the objective function to maximize
+list_coefficients = []
+coefficient = 0
+print("Enter a number to add to the coefficients when done enter N:")
+while(True):
+    if coefficient == "N" or coefficient == "n":
+        break
+    coefficient = input("Coefficient: ")
+    if coefficient.isdigit():
+        list_coefficients.append(int(coefficient))
+
 # Example problem
 c = np.array([1000, 500, 2500])  # Coefficients of the objective function to maximize
 A_ub = np.array([[100, 80, 0], [90, 50, 100], [30, 100, 40]])  # Coefficients matrix for inequality constraints
 b_ub = np.array([200, 250, 180])  # Right-hand side values for inequality constraints
 
-solve_simplex(c, A_ub, b_ub)
+list_coefficients = np.array(list_coefficients)
+solve_simplex(list_coefficients, A_ub, b_ub)
 
 # entrada = 0
 # while(True):
