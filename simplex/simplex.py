@@ -23,9 +23,23 @@ while(True):
     if coefficient.isdigit():
         list_coefficients.append(int(coefficient))
 
-# Example problem
-A_ub = np.array([[100, 80, 0], [90, 50, 100], [30, 100, 40]])  # Coefficients matrix for inequality constraints
-b_ub = np.array([200, 250, 180])  # Right-hand side values for inequality constraints
+inequality_constraints = []
+inequality_matrix = []
+right_hand_side = []
+new_equation = True
+while(new_equation):
+    add_equation = input("Do you want to add a new equation? (Y/N): ")
+    if add_equation == "N" or add_equation == "n":
+        break
+    matrix = []
+    for i in range(len(list_coefficients)):
+        x = input(f"Enter the value of x{str(i + 1)} for equation: ")
+        matrix.append(int(x))
+    inequality_matrix.append(matrix)
+    x = input("Enter the right hand side value: ")
+    inequality_constraints.append(int(x))
 
 list_coefficients = np.array(list_coefficients)
-solve_simplex(list_coefficients, A_ub, b_ub)
+inequality_matrix = np.array(inequality_matrix)
+inequality_constraints = np.array(inequality_constraints)
+solve_simplex(list_coefficients, inequality_matrix, inequality_constraints)
